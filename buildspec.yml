@@ -1,0 +1,16 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.9
+    commands:
+      - pip install -r lambda/contact-form/requirements.txt -t lambda/contact-form/
+  build:
+    commands:
+      - echo "Zipping the Lambda function"
+      - cd lambda/contact-form
+      - zip -r ../contact-form.zip .
+artifacts:
+  files:
+    - lambda/contact-form.zip
