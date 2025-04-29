@@ -19,13 +19,12 @@ A serverless backend API to receive contact form submissions, built with AWS ser
 
 ## 📁 Project Structure
 
-aws-ci-cd-pipeline/ ├── lambda/ │ └── contact-form/ │ ├── handler.py # Lambda function code │ └── requirements.txt # (Optional) external libraries ├── buildspec.yml # CI/CD instructions for CodeBuild └── README.md # You're reading this :)
-
-yaml
-Copy
-Edit
-
----
+aws-ci-cd-pipeline/ ├── lambda/ │ 
+                    └── contact-form/ │ 
+                        ├── handler.py # Lambda function code │ 
+                        └── requirements.txt # (Optional) external libraries 
+                    ├── buildspec.yml # CI/CD instructions for CodeBuild 
+                    └── README.md # You're reading this :)
 
 ## 🧪 Features
 
@@ -47,10 +46,10 @@ Content-Type: application/json
   "email": "jane@example.com",
   "message": "Hello from Lambda!"
 }
+
+
 🚧 Deployment Flow
-plaintext
-Copy
-Edit
+
 GitHub Push
    ⬇
 AWS CodePipeline
@@ -60,22 +59,24 @@ CodeBuild (zip Lambda code)
 Upload to S3 as artifact
    ⬇
 Manual or Automated Lambda Update (Coming soon)
+
 🛠 Setup Instructions
-Create DynamoDB table: ContactFormSubmissions with email as the primary key.
 
-Create Lambda function: Upload zipped Lambda from lambda/contact-form.
+    Create DynamoDB table: ContactFormSubmissions with email as the primary key.
 
-Create IAM Role for Lambda with:
+    Create Lambda function: Upload zipped Lambda from lambda/contact-form.
 
-AmazonDynamoDBFullAccess
+    Create IAM Role for Lambda with:
 
-AWSLambdaBasicExecutionRole
+    AmazonDynamoDBFullAccess
+
+    AWSLambdaBasicExecutionRole
 
 Create HTTP API in API Gateway and connect it to Lambda.
 
-Set Environment Variable for Lambda:
+    Set Environment Variable for Lambda:
 
-TABLE_NAME = ContactFormSubmissions
+    TABLE_NAME = ContactFormSubmissions
 
 Create CodeBuild Project:
 
